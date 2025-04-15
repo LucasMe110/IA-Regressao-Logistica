@@ -84,19 +84,19 @@ result = optimize.minimize(
 ##### **Fronteira de Decisão para Diferentes Valores de \( \lambda \)**
 
 **\( \lambda = 100 \)**
-![Lambda 100](image1.png)
+![Lambda 100](Lambda100.png)
 
 **\( \lambda = 10 \)**
-![Lambda 10](image2.png)
+![Lambda 10](Lambda10.png)
 
 **\( \lambda = 1 \)**
-![Lambda 1](image3.png)
+![Lambda 1](Lambda1.png)
 
 **\( \lambda = 0 \)**
-![Lambda 0](image4.png)
+![Lambda 0](Lambda0.png)
 
 **Distribuição dos Dados**
-![Distribuição](image5.png)
+![Distribuição](distribuicao.png)
 
 **Classificação de Admissão Universitária**
 ![Admissão Universitária](image6.png)
