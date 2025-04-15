@@ -84,22 +84,22 @@ result = optimize.minimize(
 ##### **Fronteira de Decisão para Diferentes Valores de \( \lambda \)**
 
 **\( \lambda = 100 \)**
-![Lambda 100](Lambda100.png)
+![Lambda 100](img/Lambda100.png)
 
 **\( \lambda = 10 \)**
-![Lambda 10](Lambda10.png)
+![Lambda 10](img/Lambda10.png)
 
 **\( \lambda = 1 \)**
-![Lambda 1](Lambda1.png)
+![Lambda 1](img/Lambda1.png)
 
 **\( \lambda = 0 \)**
-![Lambda 0](Lambda0.png)
+![Lambda 0](img/Lambda0.png)
 
 **Distribuição dos Dados**
-![Distribuição](distribuicao.png)
+![Distribuição](img/distribuicao.png)
 
 **Classificação de Admissão Universitária**
-![Admissão Universitária](image6.png)
+![Admissão Universitária](img/admissao.png)
 
 ### 4. Impacto da Regularização
 
