@@ -5,45 +5,46 @@ from matplotlib import pyplot
 sys.path.append('..')
 
 
+import numpy as np
 
 def mapFeature(X1, X2, degree=6):
     """
-    Maps the two input features to quadratic features used in the regularization exercise.
+    Mapeia duas características de entrada (X1, X2) para um espaço polinomial de grau especificado.
 
-    Returns a new feature array with more features, comprising of
-    X1, X2, X1.^2, X2.^2, X1*X2, X1*X2.^2, etc..
+    Retorna uma matriz com todas as combinações polinomiais até o grau definido.
+    Exemplo para degree=2: [1, X1, X2, X1², X1X2, X2²].
 
-    Parameters
+    Parâmetros
     ----------
     X1 : array_like
-        A vector of shape (m, 1), containing one feature for all examples.
-
+        Vetor de shape (m,) contendo a primeira característica.
     X2 : array_like
-        A vector of shape (m, 1), containing a second feature for all examples.
-        Inputs X1, X2 must be the same size.
+        Vetor de shape (m,) contendo a segunda característica.
+    degree : int, optional
+        Grau máximo do polinômio. Padrão é 6.
 
-    degree: int, optional
-        The polynomial degree.
-
-    Returns
+    Retorna
     -------
-    : array_like
-        A matrix of of m rows, and columns depend on the degree of polynomial.
+    X_poly : array_like
+        Matriz de shape (m, n), onde n é o número de termos polinomiais gerados.
     """
-    if X1.ndim > 0:
-        out = [np.ones(X1.shape[0])]
-    else:
-        out = [np.ones(1)]
-
+    # Garantir que X1 e X2 são arrays 1D
+    X1 = np.asarray(X1).reshape(-1)
+    X2 = np.asarray(X2).reshape(-1)
+    
+    # Inicializar com a coluna de intercepto (1s)
+    out = [np.ones(X1.size)]
+    
+    # Gerar termos polinomiais
     for i in range(1, degree + 1):
         for j in range(i + 1):
-            out.append((X1 ** (i - j)) * (X2 ** j))
-
-    if X1.ndim > 0:
-        return np.stack(out, axis=1)
-    else:
-        return np.array(out)
-
+            term = (X1 ** (i - j)) * (X2 ** j)
+            out.append(term)
+    
+    # Empilhar colunas horizontalmente
+    X_poly = np.column_stack(out)
+    
+    return X_poly
 
 def plotDecisionBoundary(plotData, theta, X, y):
     """
@@ -103,8 +104,10 @@ def plotDecisionBoundary(plotData, theta, X, y):
         # Plot z = 0
         pyplot.contour(u, v, z, levels=[0], linewidths=2, colors='g')
         pyplot.contourf(u, v, z, levels=[np.min(z), 0, np.max(z)], cmap='Greens', alpha=0.4)
+class SubmissionBase:
+    def __init__(self, name, parts):
+        pass  # Aceita os parâmetros, mas não faz nada (ou personalize conforme necessário)
 
-SubmissionBase=[]
 class Grader(SubmissionBase):
     X = np.stack([np.ones(20),
                   np.exp(1) * np.sin(np.arange(1, 21)),
